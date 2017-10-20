@@ -26,7 +26,7 @@ $name = $email = $tutorial =  $age = $computer = $comment =  "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
-    $nameErr = "Nimi on vajalik / Имя требуется / Name is required";
+    $nameErr = "Nimi on vajalik / Требуется имя / Name is required";
   } else {
     $name = test_input($_POST["name"]);
   } 
@@ -44,13 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["computer"])) {
-    $computerErr = "Arvuti olemasolu vajalik / требуется наличие компьютера / Computer availability required";
+    $computerErr = "Arvuti olemasolu vajalik / Требуется наличие компьютера / Computer availability required";
   } else {
     $computer = test_input($_POST["computer"]);
   }
 
   if (empty($_POST["age"])) {
-    $tutorialErr = "Õppetund valik on vajalik / Учебник выбор требуется / Age is required";
+    $tutorialErr = "Õppetund valik on vajalik / Требуется указать возраст / Age is required";
   } else {
     $age = test_input($_POST["age"]);
   }
@@ -73,13 +73,13 @@ function test_input($data) {
 
 <h2>SFD Tallinn 2017</h2>
 
-<p><span class="error">* nõutud väli / Обязательное поле / required field</span></p>
+<p><span class="error">* nõutud väli / обязательное поле / required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   nimi / имя / name:<br />
   <input type="text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  e-post / Эл. адрес / email:<br />
+  e-post / эл. адрес / email:<br />
   <input type="text" name="email" value="<?php echo $email;?>">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
@@ -93,7 +93,7 @@ function test_input($data) {
   <input type="radio" name="tutorial" <?php if (isset($tutorial) && $tutorial=="Digitaalne joonistamine  /
  Цифровая живопись / Digital painting") echo "checked";?> value="Digitaal
 ne joonistamine / Цифровая живопись / Digital painting ">Digitaalne joonistamine / Цифровая живопись / Digital painting<br />
-  <input type="radio" name="tutorial" <?php if (isset($tutorial) && $tutorial=="Avatud tarkvara / Открытое программное обеспечение / Open source software") echo "checked";?> value="Avatud tarkvara / Открытое программное обеспечение / Open Software">Avatud tarkvara / Дизайн и бухгалтерский учет / Open software
+  <input type="radio" name="tutorial" <?php if (isset($tutorial) && $tutorial=="Avatud tarkvara / Открытое программное обеспечение / Open source software") echo "checked";?> value="Avatud tarkvara / Открытое программное обеспечение / Open Software">Avatud tarkvara / Открытое программное обеспечение / Open software
   <span class="error">* <?php echo $tutorialErr;?></span>
   <br><br>
   Saan tuua oma arvuti / Я могу взять мой собственный компьютер / I can bring my own computer:<br />
@@ -133,11 +133,11 @@ if (isset($_POST['formsubmit'])){
    $message = "
 
    nimi / имя / name, $name ,
-   e-post / Эл. адрес / email, $email ,
+   e-post / эл. адрес / email, $email ,
    vanas / возраст / age, $age ,
    õppetund / тема / tutorial, $tutorial
    tuua arvuti / принести компьютер / bring computer, $computer ,
-   kommentaarid / Комментарии / comments, $comment ,
+   kommentaarid / комментарии / comments, $comment ,
 
    ";
    // Ensure have language encoding support
@@ -146,7 +146,7 @@ if (isset($_POST['formsubmit'])){
    // Send the message using mail() function 
    mail($myemail, $subject, $message, $headers);
    // Give user feedback 
-   echo "<h2>Teie panus / Ваш вклад / Your input:</h2>";
+   echo "<h2>Teie panus / Ваши данные / Your input:</h2>";
    echo $name;
    echo "<br>";
    echo $email;
@@ -161,7 +161,7 @@ if (isset($_POST['formsubmit'])){
    echo "<br>";
    echo "On esitatud, siis peaks saama kinnituse 1 tööpäeva jooksul";
    echo "<br>";
-   echo "Был представлен, вы должны получить подтверждение в течение 1 рабочего дня";
+   echo "Отправлено, вы должны получить подтверждение в течение 1 рабочего дня";
    echo "<br>";
    echo "Has been submitted, you should receive an acknowledgement within 1 working day";
    echo "<br>";
